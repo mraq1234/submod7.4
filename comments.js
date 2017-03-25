@@ -19,21 +19,21 @@ function comments(state = [], action) {
         case EDIT_COMMENT:
             return state.map(comment => {
                 if (comment.id === action.id) {
-                    return { text: action.text, id: comment.id, votes: comment.votes }
+                    return { ...comment, text: action.text }
                 }
                 return comment;
             })
         case THUMB_UP_COMMENT:
             return state.map(comment => {
                 if (comment.id === action.id) {
-                    return { text: comment.text, id: comment.id, votes: comment.votes + 1 }
+                    return { ...comment, votes: comment.votes + 1 }
                 }
                 return comment;
             });
         case THUMB_DOWN_COMMENT:
             return state.map(comment => {
                 if (comment.id === action.id) {
-                    return { text: comment.text, id: comment.id, votes: comment.votes - 1 }
+                    return { ...comment, votes: comment.votes - 1 }
                 }
                 return comment;
             });
